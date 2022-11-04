@@ -201,14 +201,17 @@ col1, col2, col3 = st.columns(3)
 col1.metric("Total Nº of Partners",36)
 col2.metric("Total Nº of Partners reporting Pledge",number_p.count())
 col3.metric("Total Nº of Partners reporting Plan", 19)
+
 col1.metric("Total Nº of Plans reported", 24,"(out of 19 partners)")
 col2.metric("Total Nº of Members Pledged", int(number_members.sum()),"(out of 23 partners)")##
 col3.metric("Countries in which they operate",175,"(out of 19 partners)")
+
 col1.metric("Total Nº Invididuals Pledged",numerize(int(total_individuals.sum())*0.75),"(out of 17 partners)")
-col2.metric("Total Nº Companies Pledged",int(num_companies.sum()*0.75),"(out of 5 partners)")
-col3.metric("Total Nº Hectares Natural Systems Pledged",numerize(int(num_natural_system.sum())*0.75),"(out of 3 partners)")
-col1.metric("Total Nº Cities Pledged",int(num_cities.sum()*0.75),"(out of 5 partners)")
-col2.metric("Total Nº Region Pledged",int(num_regions.sum()*0.75),"(out of 5 partners)")
+#col2.metric("Total Nº Companies Pledged",int(num_companies.sum()*0.75),"(out of 5 partners)")
+col2.metric("Total Nº Cities Pledged",int(num_cities.sum()*0.75),"(out of 5 partners)")
+col3.metric("Total Nº Region Pledged",int(num_regions.sum()*0.75),"(out of 5 partners)")
+col1.metric("Total Nº Hectares Natural Systems Pledged",numerize(int(num_natural_system.sum())*0.75),"(out of 3 partners)")
+
 #col3.metric("Total Nº Countries Pledged",int(num_countries.sum()*0.75),"(out of 5 partners)")
 
 #Radialgraph
