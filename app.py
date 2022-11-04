@@ -144,14 +144,14 @@ num_regions = df['q1392']  #REGIONS
 image = Image.open('R2R_RGB_PINK.png')
 
 col_x, col_y, col_z = st.columns(3)
-col_z.image(image, width= 200)
+col_x.image(image, width= 200)
 #col_y.subheader("R2R DASHBOARD")
 #col_y.caption("R2R REPORTING TOOL RESULTS - Beta version 2022/11/02")
 #col_y.caption("Information from R2R Surveys reported until 2022/10/20")
 
 #st.title("R2R METRICS DASHBOARD")
-col_x.header("RACE TO RESILIENCE DATA EXPLORER* ")
-col_x.write('*Trial Phase')
+col_y.header("DATA EXPLORER")
+col_z.write('Trial Phase')
 #col_x.caption("Information from R2R Surveys until 2022/10/20")
 st.markdown('<div style="text-align: justify;"></div>', unsafe_allow_html=True)
 st.markdown('<div style="text-align: justify;">R2R is a worldwide Campaign launched in 2021 by the High-Level Champions (HLT). It aims to increase resilience for four billion people living in vulnerable communities in collaboration with partner organizations from around the world while developing tools to support them in their work. The Campaign has developed a people-centred resilience Metrics Framework for non-state actors to report climate resilience actions and to quantify and validate their impact under a common framework. This framework will be opened to public consultation at COP27.</div>', unsafe_allow_html=True)
