@@ -15,7 +15,7 @@ from numerize.numerize import numerize
 
 #Dashboard estructure
 st.set_page_config(
-    page_title="R2R REPORTING TOOL RESULT - BETA VERSION",
+    page_title="R2R DATA EXPLORER",
     page_icon="🌱",
     layout="wide")
 
