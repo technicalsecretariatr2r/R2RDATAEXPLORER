@@ -1000,7 +1000,7 @@ elif engagement_plan == 'Regions':
     col2.metric("Inland %*",s_inland_region_plan)
     col3.metric("Costal %*",s_costal_region_plan)
     col4.metric("Urban %*",s_urban_region_plan)
-    col4.metric("Rural %*",s_rural_region_plan)
+    col5.metric("Rural %*",s_rural_region_plan)
     #st.subheader("**Type of Resilience**:")
     st.markdown("**Type of Resilience**: "+p_type_resilience_region_plan)
     #st.subheader("**Continents of Region**: ")
