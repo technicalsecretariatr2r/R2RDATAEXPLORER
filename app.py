@@ -1031,6 +1031,6 @@ elif engagement_plan == 'Natural System':
     st.caption("*estimated information")
 
 else:
-    st.markdown("No more Plan information reported")
+    st.markdown("No more plan information reported")
 
 #st.markdown("""---""")
