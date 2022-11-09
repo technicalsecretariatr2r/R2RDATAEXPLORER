@@ -597,7 +597,7 @@ elif engagement == 'Natural Systems':
     st.caption("*estimated information")
 
 else:
-    st.caption("")
+    st.markdown("No Pledge information reported")
 
 
 
