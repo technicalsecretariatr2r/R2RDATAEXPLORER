@@ -507,10 +507,10 @@ if engagement == 'Individuals':
     col1.markdown("**Total Pledge Direct Beneficiaries**")
     col1.subheader(numerize(s_total_individuals.sum()))
     #col2.metric("Inland*",s_inland_ind) ##
-    col2.markdown("**Inland***"
+    col2.markdown("**Inland***")
     col2.subheader(str(s_inland_ind)+" %")
     #col3.metric("Costal %*",s_costal_ind)
-    col3.markdown("**Costal***"
+    col3.markdown("**Costal***")
     col3.subheader(str(s_costal_ind)+" %")              
     #col4.metric("Urban %*",s_urban_ind)
     col4.markdown("**Urban***")
