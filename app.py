@@ -506,8 +506,8 @@ if engagement == 'Individuals':
     col1.metric("Total Pledge Direct Beneficiaries",numerize(s_total_individuals.sum()))
     col2.metric("Inland %*",s_inland_ind) ##
     col3.metric("Costal %*",s_costal_ind)
-    col4.metric("Urban %*",s_urban_ind))
-    col5.metric("Rural %*",s_rural_ind))
+    col4.metric("Urban %*",s_urban_ind)
+    col5.metric("Rural %*",s_rural_ind)
     st.markdown("**Hazards to provide Resilience**: "+p_ind_hazard)
     #st.markdown(p_ind_hazard)
     #st.subheader("Continents where they operate")
