@@ -176,7 +176,7 @@ st.write(
 st.title("QUANTITATIVE / MAGNITUD METRICS")
 
 
-st.markdown('<div style="text-align: justify;">‘Quantitative’ or ‘Magnitude’ metrics help estimate R2R Actions’ size of impact in terms of the number of beneficiaries reached (linking up to the campaign’s flagship goal of making 4 billion people more resilient.</div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align: justify;">‘Quantitative’ or ‘Magnitude’ metrics help estimate R2R Actions’ size of impact in terms of the number of beneficiaries reached (linking up to the campaign’s flagship goal of making 4 billion people more resilient).</div>', unsafe_allow_html=True)
 st.markdown('<div style="text-align: justify;"></div>', unsafe_allow_html=True) ##Espacio Texto
 with st.expander("Read more about R2R Target Beneficiaries"):
     st.write("""
@@ -193,19 +193,19 @@ st.caption("Information reported by R2R partners until 20/10/2022")
 
 col1, col2, col3 = st.columns(3)
 
-col1.metric("Total Nº of Partners",36)
-col2.metric("Total Nº of Partners reporting Pledge",number_p.count())
-col3.metric("Total Nº of Partners reporting Plan", 19)
+col1.metric("Total Nº of partners",36)
+col2.metric("Total Nº of partners reporting pledged",number_p.count())
+col3.metric("Total Nº of partners reporting plans", 19)
 
-col1.metric("Total Nº of Plans reported", 24,"(out of 19 partners)")
-col2.metric("Total Nº of Members Pledged", int(number_members.sum()),"(out of 23 partners)")##
+col1.metric("Total Nº of plans reported", 24,"(out of 19 partners)")
+col2.metric("Total Nº of members pledged", int(number_members.sum()),"(out of 23 partners)")##
 col3.metric("Countries in which they operate",175,"(out of 19 partners)")
 
-col1.metric("Total Nº Invididuals Pledged",numerize(int(total_individuals.sum())*0.75),"(out of 17 partners)")
+col1.metric("Total Nº individuals pledged",numerize(int(total_individuals.sum())*0.75),"(out of 17 partners)")
 #col2.metric("Total Nº Companies Pledged",int(num_companies.sum()*0.75),"(out of 5 partners)")
-col2.metric("Total Nº Cities Pledged",int(num_cities.sum()*0.75),"(out of 5 partners)")
-col3.metric("Total Nº Region Pledged",int(num_regions.sum()*0.75),"(out of 5 partners)")
-col1.metric("Total Nº Hectares Natural Systems Pledged",numerize(int(num_natural_system.sum())*0.75),"(out of 3 partners)")
+col2.metric("Total Nº cities pledged",int(num_cities.sum()*0.75),"(out of 5 partners)")
+col3.metric("Total Nº regions pledged",int(num_regions.sum()*0.75),"(out of 5 partners)")
+col1.metric("Total Nº Hectares natural systems pledged",numerize(int(num_natural_system.sum())*0.75),"(out of 3 partners)")
 
 #col3.metric("Total Nº Countries Pledged",int(num_countries.sum()*0.75),"(out of 5 partners)")
 
