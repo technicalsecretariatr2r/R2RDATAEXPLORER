@@ -173,7 +173,7 @@ st.write(
     """,
     unsafe_allow_html=True,)
 
-st.title("QUANTITATIVE / MAGNITUD METRICS")
+st.title("QUANTITATIVE / MAGNITUDE METRICS")
 
 
 st.markdown('<div style="text-align: justify;">‘Quantitative’ or ‘Magnitude’ metrics help estimate R2R Actions’ size of impact in terms of the number of beneficiaries reached (linking up to the campaign’s flagship goal of making 4 billion people more resilient).</div>', unsafe_allow_html=True)
@@ -492,7 +492,7 @@ col1.title("PLEDGE")
 col2.caption('')
 col2.subheader(str(partner))
 
-st.subheader('MAGNITUD METRICS')
+st.subheader('MAGNITUDE METRICS')
 
 engagement = st.selectbox(
     "SELECT -"+str.upper(p_short_name)+"-  TARGET BENEFICIARIES PLEDGED :",
