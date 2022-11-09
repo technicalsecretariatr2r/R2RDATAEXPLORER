@@ -833,7 +833,7 @@ if len(str(t_a_other)) > 3:
 
 
 
-st.subheader("CURRENT STATUS OF PROYECTS")
+st.subheader("PROJECTS")
 #df_plan_select['p2780'] = pd.to_numeric(df['p2780']) #Estimated_numer_of_proyects
 
 col1, col2, col3, col4 = st.columns(4)
@@ -856,14 +856,14 @@ col2.subheader(str(Estimated_numer_of_proyects))
 #Please indicate how many of the planned projects have started. *in %
 #df_plan_select['p2777'] = pd.to_numeric(df['p2777']) #Projects_have_started
 Projects_have_started = df_plan_select['p2777'].values[0]  #Projects_have_started
-col3.markdown("PROYECTS ALREADY STARTED*:")
+col3.markdown("PROJECTS ALREADY STARTED*:")
 col3.subheader(str(Projects_have_started)+" %")
 #st.metric("Number of proyects already started", int(Projects_have_started))
 
 #Please indicate how many of the planned projects have been completed.* in %
 #df_plan_select['p2778'] = pd.to_numeric(df['p2778']) #Projects_have_been_comleted
 Projects_have_been_comleted = df_plan_select['p2778'].values[0]  #Projects_have_been_comleted
-col4.markdown("PROYECTS COMPLETED*:")
+col4.markdown("PROJECTS COMPLETED*:")
 col4.subheader(str(Projects_have_been_comleted)+" %")
 #st.metric("Number of proyects completed", int(Projects_have_been_comleted))
 st.caption("*estimated information")
@@ -969,7 +969,7 @@ if engagement_plan == 'Individuals':
 
 
 elif engagement_plan == 'Companies':
-    col1.metric("Total Pledge Nº Companies",s_num_companies_plan.sum())
+    col1.metric("Total Nº companies",s_num_companies_plan.sum())
     col2.metric("Inland %*",s_inland_companies_plan)
     col3.metric("Costal %*",s_costal_companies_plan)
     col4.metric("Urban %*",s_urban_companies_plan)
@@ -982,7 +982,7 @@ elif engagement_plan == 'Companies':
     st.caption("*estimated information")
 
 elif engagement_plan == 'Countries':
-    col1.metric("Number of Countries where they operate",s_num_countries_plan.sum())
+    col1.metric("Number of countries where they operate",s_num_countries_plan.sum())
     col2.metric("Inland %*",s_inland_countries_plan)
     col3.metric("Costal %*",s_costal_countries_plan)
     col4.metric("Urban %*",s_urban_countries_plan)
@@ -995,13 +995,13 @@ elif engagement_plan == 'Countries':
 
 
 elif engagement_plan == 'Regions':
-    col1.metric("Total Plan Region",s_num_regions.sum())
+    col1.metric("Total Nº region",s_num_regions.sum())
     col2.metric("Inland %*",s_inland_region_plan)
     col3.metric("Costal %*",s_costal_region_plan)
     col4.metric("Urban %*",s_urban_region_plan)
     col5.metric("Rural %*",s_rural_region_plan)
     #st.subheader("**Type of Resilience**:")
-    st.markdown("**Type of Resilience**: "+p_type_resilience_region_plan)
+    st.markdown("**Type of resilience**: "+p_type_resilience_region_plan)
     #st.subheader("**Continents of Region**: ")
     st.markdown("**Continents where they operate**: "+p_continents_region_plan)
     st.caption("*estimated information")
@@ -1012,13 +1012,13 @@ elif engagement_plan == 'Cities':
     col3.metric("Urban %*",s_urban_cities_plan)
     col4.metric("Rural %*",s_rural_cities_plan)
     #st.subheader("**Type of Resilience**: ")
-    st.markdown("**Type of Resilience**: "+p_type_resilience_cities_plan)
+    st.markdown("**Type of resilience**: "+p_type_resilience_cities_plan)
     #st.subheader("**Continents of countries**: ")
     st.markdown("**Continents where they operates**: "+p_continents_cities_plan)
     st.caption("*estimated information")
 
 elif engagement_plan == 'Natural System':
-    col1.metric("Total Hectares Natural Systems",numerize(int(s_num_natural_system.sum())))
+    col1.metric("Total Nº Hectares natural systems",numerize(int(s_num_natural_system.sum())))
     col2.metric("Inland %*",s_inland_natsys_plan)
     col3.metric("Costal %*",s_costal_natsys_plan)
     col4.metric("Urban %*",s_urban_natsys_plan)
