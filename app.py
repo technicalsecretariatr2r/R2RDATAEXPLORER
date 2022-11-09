@@ -572,10 +572,10 @@ elif engagement == 'Regions':
 
 elif engagement == 'Cities':
     col1.metric("Total Pledge Cities",numerize(s_num_cities.sum()))
-    col2.metric("Inland %*",int(s_inland_cities))
-    col3.metric("Costal %*",int(s_costal_cities))
-    col4.metric("Urban %*",int(s_urban_cities))
-    col5.metric("Rural %*",int(s_rural_cities))
+    col2.metric("Inland %*",s_inland_cities)
+    col3.metric("Costal %*",s_costal_cities)
+    col4.metric("Urban %*",s_urban_cities)
+    col5.metric("Rural %*",s_rural_cities)
 
     #st.subheader("Hazards Cities")
     st.markdown("**Hazards Cities**: "+p_hazard_cities)
