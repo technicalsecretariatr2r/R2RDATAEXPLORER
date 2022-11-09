@@ -555,10 +555,10 @@ elif engagement == 'Countries':
 
 elif engagement == 'Regions':
     col1.metric("Total Pledge Region",int(s_num_regions.sum()))
-    col2.metric("Inland %*",int(s_inland_region))
-    col3.metric("Costal %*",int(s_costal_region))
-    col4.metric("Urban %*",int(s_urban_region))
-    col5.metric("Rural %*",int(s_rural_region))
+    col2.metric("Inland %*",s_inland_region)
+    col3.metric("Costal %*",s_costal_region)
+    col4.metric("Urban %*",s_urban_region)
+    col5.metric("Rural %*",s_rural_region)
 
     #st.subheader("Hazards Region")
     st.markdown("**Hazards Region**: "+p_hazard_region)
