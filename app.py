@@ -505,7 +505,7 @@ col1, col2, col3, col4,col5 = st.columns(5)
 if engagement == 'Individuals':
     #col1.metric("Total Pledge Direct Beneficiaries",numerize(s_total_individuals.sum()))
     col1.markdown("**Total Pledge Direct Beneficiaries**")
-    col1.markdown(numerize(s_total_individuals.sum()))
+    col1.subheader(numerize(s_total_individuals.sum()))
     col2.metric("Inland %*",s_inland_ind) ##
     col3.metric("Costal %*",s_costal_ind)
     col4.metric("Urban %*",s_urban_ind)
