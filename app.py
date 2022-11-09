@@ -584,8 +584,7 @@ elif engagement == 'Cities':
 
     st.caption("*estimated information")
 
-
-else:
+elif engagement == 'Natural Systems':
     col1.metric("Total Hectares Natural Systems",numerize(s_num_natural_system.sum()))
     col2.metric("Inland (%)*",s_inland_natsys)
     col3.metric("Costal (%)*",s_costal_natsys)
@@ -596,6 +595,9 @@ else:
     st.markdown("**Hazards**: "+p_hazards_nansyst)
     st.markdown("**Continents**: "+str(p_continents_natsys))
     st.caption("*estimated information")
+
+else:
+    st.caption("")
 
 
 
