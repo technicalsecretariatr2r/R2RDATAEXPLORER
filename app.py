@@ -321,7 +321,7 @@ df_sub_ra_def = pd.read_csv('Definiciones_sub_RA_CSV.csv',sep=';')
 #df_sub_ra_def = df.dropna(how = 'all')
 #st.write(df_ra_def)
 
-st.markdown('<div style="text-align: justify;"> ‘Qualitative’ or ‘Depth’ metrics help understand how the partners and their members contribute to increasing the resilience of people vulnerable to climate change by observing which key conditions (seven Resilience Attributes) are making a change. Resilience attributes act as an intermediary between the outcome of actions and increased resilience. The scientific literature acknowledges those Resilience Attributes to foster resilience or empower resilience-driving transformations.These seven Resilience Attributes cover most of the aspects of resilience building for the initiatives across the three constituting dimensions of resilience (plan, cope and learn). They are operationalized through 19 subcategories that address different aspects of the definitions of their correspondent Resilience Attribute.</div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align: justify;">‘Qualitative’ or ‘Depth’ metrics help us understand how partners and their members contribute to increasing the resilience of people vulnerable to climate change by observing which key conditions (seven Resilience Attributes) are impacted. Resilience attributes act as an intermediary between the outcome of actions and increased resilience. The scientific literature acknowledges those Resilience Attributes to foster resilience or empower resilience-driving transformations. These seven Resilience Attributes cover most of the aspects of resilience building for the initiatives across the three constituting dimensions of resilience (plan, cope and learn). They are operationalized through 19 subcategories that address different aspects of the definitions of their correspondent Resilience Attribute.</div>', unsafe_allow_html=True)
 st.markdown('<div style="text-align: justify;"></div>', unsafe_allow_html=True)
 
 with st.expander("Summary of the seven Resilience Attributes and their nineteen subcategories"):
@@ -472,10 +472,10 @@ col1, col2, col3 = st.columns(3)
 col1.markdown('**PRIORITY GROUPS**')
 col1.markdown(p_priority_g_list)
 
-col2.markdown('**AREA WHERE THEY OPERATE**')
+col2.markdown('**AREAS WHERE THEY OPERATE**')
 col2.markdown(p_key_area_action_list)
 
-col3.markdown('**WHERE THEY OPERATE**')
+col3.markdown('**OPERATION REGIONS**')
 col3.markdown(p_macroregion_g_list)
 
 st.markdown("""---""")
@@ -650,7 +650,7 @@ s_df3 = pd.DataFrame(dict(
     r=[s_Equity, s_Inclusivity,s_Preparedness,s_Planning,s_Experential_learning, s_Educational_learning,
     s_Autonomy, s_Leardership,s_Decision_making,s_Collective_participation,s_Connectivity,s_Networking,s_Diversity,
      s_Redundancy,s_Finance,s_Natural_resources,s_Technologies,s_Infrastructure,s_Services],
-    theta=['Equity','Inclusivity','Preparedness','Planning','Experential Learning','Educational Learning',
+    theta=['Equity','Inclusivity','Preparedness','Planning','Experiential Learning','Educational Learning',
     'Autonomy','Leardership','Decision making','Collective participation','Connectivity','Networking','Diversity ',
     'Redundancy','Finance','Natural resources','Technologies','Infrastructure',
     'Services']))
@@ -697,7 +697,7 @@ elif sub_ra_partner == 'Preparedness':
 elif sub_ra_partner == 'Planning':
     st.markdown("Planning: "+Planning_d)
 elif sub_ra_partner == 'Experential learning':
-    st.markdown("Experential learning: "+Experential_learning_d)
+    st.markdown("Experiential learning: "+Experential_learning_d)
 elif sub_ra_partner == 'Educational learning':
     st.markdown("Educational learning: "+Educational_learning_d)
 elif sub_ra_partner == 'Autonomy':
