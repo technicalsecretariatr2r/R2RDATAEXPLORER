@@ -1,6 +1,3 @@
-#Help Source: https://github.com/Sven-Bo/streamlit-sales-dashboard/blob/main/app.py
-# web setting: https://github.com/dataprofessor/dashboard/blob/master/streamlit_app.py
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -13,7 +10,7 @@ import leafmap.foliumap as leafmap
 import leafmap
 from numerize.numerize import numerize
 
-#Dashboard estructure
+#Dashboard 
 st.set_page_config(
     page_title="R2R DATA EXPLORER",
     page_icon="🌱",
@@ -22,7 +19,7 @@ st.set_page_config(
 #data
 
 
-df = pd.read_csv('BD_GI, Pledge, RA_CSV_02_nov.csv',sep=';', header=None, prefix="q").iloc[2:]
+df = pd.read_csv('BD_GI, Pledge, RA_CSV_08_nov.csv',sep=';', header=None, prefix="q").iloc[2:]
 df.set_index("q0", inplace = True)
 df = df.dropna(how = 'all')
 
@@ -150,7 +147,7 @@ col_x.image(image, width= 200)
 #col_y.caption("Information from R2R Surveys reported until 2022/10/20")
 
 #st.title("R2R METRICS DASHBOARD")
-col_y.header("DATA EXPLORER")
+col_y.title("DATA EXPLORER")
 col_y.write('Trial Phase')
 #col_x.caption("Information from R2R Surveys until 2022/10/20")
 st.markdown('<div style="text-align: justify;"></div>', unsafe_allow_html=True)
@@ -162,9 +159,7 @@ st.markdown('<div style="text-align: justify;"></div>', unsafe_allow_html=True) 
 with st.expander("Summarised view of the Metrics Framework"):
     st.image("Summary_Metrics_R2R_Framework.png")
 
-st.markdown('Click *here* to download full metrics framework') ## Pendiente link
-
-
+##st.markdown('Click *here* to download full metrics framework') ## Pendiente link
 
 #st.markdown("""---""")
 
@@ -178,7 +173,7 @@ st.write(
     """,
     unsafe_allow_html=True,)
 
-st.header("📈 QUANTITATIVE/MAGNITUD METRICS")
+st.title("QUANTITATIVE / MAGNITUD METRICS")
 
 
 st.markdown('<div style="text-align: justify;">‘Quantitative’ or ‘Magnitude’ metrics help estimate the size of the impact of R2R Actions in terms of the number of beneficiaries reached (linking up to the Campaign’s flagship ultimate goal of 4 billion people made more resilient)</div>', unsafe_allow_html=True)
@@ -272,7 +267,7 @@ columns_pg = list(range(18,27)) #Other Excluded!
 df_p_g  = df.iloc[:,columns_pg ]
 df_p_g = df_p_g.stack().value_counts()
  #(normalize=True)
-fig_p_g=px.bar(df_p_g,title="Priority Groups (frequency)*",height=500, width=500, orientation='h')
+fig_p_g=px.bar(df_p_g,title="PRIORITY GROUPS (frequency)*",height=500, width=500, orientation='h')
 fig_p_g.update_layout(showlegend=False)
 
 
@@ -293,7 +288,7 @@ columns_k_a = list(range(41,47)) #Other Excluded!
 df_k_a  = df.iloc[:,columns_k_a ]
 df_k_a = df_k_a.stack().value_counts(normalize=True) #(normalize=True)
 df_k_a = df_k_a.reset_index() ## PENDIENTE: CAMBIAR NOMBRE A COLUMNAS PARA MEJORAR VISUALIZACIÓN
-fig_k_a = px.pie(df_k_a, title="Key Area of Action (%)*",height=500, width=500, values=0, names= 'index')
+fig_k_a = px.pie(df_k_a, title="KEY AREA OF ACTION (%)*",height=500, width=500, values=0, names= 'index')
 #fig_k_a.update_layout(legend=dict(
 #    yanchor="top",
 #    y=0.0,
@@ -301,10 +296,10 @@ fig_k_a = px.pie(df_k_a, title="Key Area of Action (%)*",height=500, width=500, 
 #    x=0.0))
 
 
-tab1, tab2, tab3 = st.tabs(["Map of Countries in which they operate", "Priority Groups", "Key Areas of Action"])
+tab1, tab2, tab3 = st.tabs(["MAP OF COUNTRIES IN WHICH THEY OPERATE", "PRIORITY GROUPS", "KEY AREAS OF ACTION"])
 
 with tab1:
-   st.markdown("Map of Countries in which they operate*")
+   st.markdown("**MAP OF COUNTRIES IN WHICH THEY OPERATE***")
    st.image("heatmap_country_pledged.png", width=900)
    st.write("*Note: Frequency of countries regarding where partners operate, considering all possible target beneficiaries (darkness means that more partners operate in those countries)")
 
@@ -315,7 +310,7 @@ with tab3:
    st.write(fig_k_a)
 
 
-st.header("🔎 QUALITATIVE/DEPTH METRICS")
+st.title("QUALITATIVE / DEPTH METRICS")
 
 ###DEFINITIONS DICTIONARY
 df_ra_def = pd.read_csv('Definiciones_RA.csv',sep=';')
@@ -345,7 +340,7 @@ ra_dictionary = col_a.selectbox(
     options=df_ra_def["RA"].unique())
 df_ra_def_sel = df_ra_def.query('RA == @ra_dictionary')
 col_a.markdown(str(df_ra_def_sel['RA'].values[0])+": "+str(df_ra_def_sel['DEF'].values[0]))
-col_a.markdown("Sub Attributes: "+str(df_ra_def_sel['SUBRA'].values[0])+".")
+col_a.markdown("**SUBCATEGORIES**: "+str(df_ra_def_sel['SUBRA'].values[0])+".")
 
 col_b.write(fig_ra_all)
 col_b.caption("*Out of 21 Partners")
@@ -354,7 +349,7 @@ sub_ra_dictionary = col_b.selectbox(
     options=df_sub_ra_def['SUB_RA'].unique())
 
 df_sub_ra_def_sel = df_sub_ra_def.query('SUB_RA == @sub_ra_dictionary')
-col_b.markdown(str(df_sub_ra_def_sel['SUB_RA'].values[0])+": "+df_sub_ra_def_sel['DEF_SUB'].values[0])
+col_b.markdown(str(df_sub_ra_def_sel['SUB_RA'].values[0])+":  "+df_sub_ra_def_sel['DEF_SUB'].values[0])
 
 
 
@@ -362,10 +357,10 @@ col_b.markdown(str(df_sub_ra_def_sel['SUB_RA'].values[0])+": "+df_sub_ra_def_sel
 #FILTER SelectBox por partner
 st.markdown("""---""")
 
-st.header("INFORMATION BY PARTNER")
+st.title("INFORMATION BY PARTNER")
 
 partner = st.selectbox(
-    "SELECT R2R PARTNER:",
+    "SELECT R2R PARTNER: 🔎 ",
     options=df["q1"].unique())
 df_select = df.query('q1 == @partner')
 
@@ -474,7 +469,7 @@ col2.metric("Number of Members", int(s_number_members.sum()))
 #st.markdown("""---""")
 
 col1, col2, col3 = st.columns(3)
-col1.markdown('**KIND OF BENEFICIARIES THEY TARGET**')
+col1.markdown('**PRIORITY GROUPS**')
 col1.markdown(p_priority_g_list)
 
 col2.markdown('**AREA WHERE THEY OPERATE**')
@@ -492,113 +487,121 @@ df_engagement = df_engagement.reset_index()
 #st.write(df_engagement.head())
 
 
-st.header("PLEDGE: "+str(partner)+" ("+str(p_short_name)+")")
+col1, col2 = st.columns(2)
+col1.title("PLEDGE")
+col2.caption('')
+col2.subheader(str(partner))
 
+st.subheader('MAGNITUD METRICS')
 
 engagement = st.selectbox(
     "SELECT -"+str.upper(p_short_name)+"-  TARGET BENEFICIARIES PLEDGED :",
         options= df_engagement['index'].unique())
 df_select_engagement = df_select.query('index == @engagement')  ####REVISAR
 
-st.subheader('MAGNITUD METRICS')
 
-col1, col2 = st.columns(2)
+col1, col2, col3, col4,col5 = st.columns(5)
 
 if engagement == 'Individuals':
-    col1.metric("Inland %",s_inland_ind) ##
-    col2.metric("Costal %",s_costal_ind)
-    col1.metric("Urban %",s_urban_ind)
-    col2.metric("Rural %",s_rural_ind)
     col1.metric("Total Pledge Direct Beneficiaries",numerize(s_total_individuals.sum()))
-    col1.subheader("Hazards to provide Resilience")
-    col1.markdown(p_ind_hazard)
-    col1.subheader("Continents where they operate")
-    col1.markdown(p_ind_continents)
+    col2.metric("Inland %*",int(s_inland_ind)) ##
+    col3.metric("Costal %*",int(s_costal_ind))
+    col4.metric("Urban %*",int(s_urban_ind))
+    col5.metric("Rural %*",int(s_rural_ind))
+    st.markdown("**Hazards to provide Resilience**: "+p_ind_hazard)
+    #st.markdown(p_ind_hazard)
+    #st.subheader("Continents where they operate")
+    st.markdown("**Continents where they operate**: "+p_ind_continents)
+    st.caption("*estimated information")
 
 
 elif engagement == 'Companies':
-    col1.metric("Inland %",int(s_inland_companies))
-    col2.metric("Costal %",int(s_costal_companies))
-    col1.metric("Urban %",int(s_urban_companies))
-    col2.metric("Rural %",int(s_rural_companies))
     col1.metric("Total Pledge Nº Companies",numerize(s_num_companies.sum()))
-    col1.subheader("Sector Companies")
-    col1.markdown(p_sector_companies)
-    col1.subheader("Hazard Companies")
-    col1.markdown(p_hazard_companies)
+    col2.metric("Inland %*",int(s_inland_companies))
+    col3.metric("Costal %*",int(s_costal_companies))
+    col4.metric("Urban %*",int(s_urban_companies))
+    col5.metric("Rural %*",int(s_rural_companies))
+
+    #st.subheader("Sector Companies")
+    st.markdown("**Sector Companies**: "+p_sector_companies)
+    st.markdown("**Hazard Companies**: "+p_hazard_companies)
+    st.markdown(p_hazard_companies)
     #col1.metric("Number Resilience - Provision Key",s_num_resilience_provision_key_companies)
     #col1.metric("Number Resilience - Ocupation Companies",s_num_resilience_ocupation_companies)
-    col1.subheader("Type Resilience Companies")
-    col1.markdown(p_type_resilience_companies)
-    col1.subheader("Continents Companies")
-    col1.markdown(p_continents_companies)
+    #st.subheader("**Type Resilience Companies**: "+p_type_resilience_companies)
+    st.markdown("**Type Resilience Companies**: "+p_type_resilience_companies)
+    #st.subheader("Continents Companies")
+    st.markdown("**Continents**: "+p_continents_companies)
     #col1.metric("Indirect - Resilience provition key)",s_indirect_num_resilience_provision_key)
     #col1.metric("Indirect - Resilience ocupation)",s_indirect_num_resilience_ocupation)
     #col1.metric("Indirect - Number of person Beneficiaries",s_indirect_num_person)
+    st.caption("*estimated information")
 
 elif engagement == 'Countries':
-    col1.metric("Inland %",int(s_inland_countries))
-    col2.metric("Costal %",int(s_costal_countries))
-    col1.metric("Urban %",int(s_urban_countries))
-    col2.metric("Rural %",int(s_rural_countries))
     col1.metric("Number of Countries where they operate",int(s_num_countries.sum()))
-    col1.subheader("Hazards countries")
-    col1.markdown(p_hazard_countries)
-    col1.subheader("Type of Resilience")
-    col1.markdown(p_type_resilience_countries)
-    col1.subheader("Continents of countries")
-    col1.markdown(p_continents_countries)
+    col2.metric("Inland %*",int(s_inland_countries))
+    col3.metric("Costal %*",int(s_costal_countries))
+    col4.metric("Urban %*",int(s_urban_countries))
+    col5.metric("Rural %*",int(s_rural_countries))
+    st.markdown("**Hazards countries**:"+p_hazard_countries)
+    #st.markdown(p_hazard_countries)
+    st.markdown("**Type of Resilience**: "+p_type_resilience_countries)
+    #st.markdown(p_type_resilience_countries)
+    st.markdown("**Continents**: "+p_continents_countries)
+    #st.markdown(p_continents_countries)
     #s_num_resilience_provision_key_countries= df_plan_select['q956']
     #s_num_protection_harm_countries= df_plan_select['q958']
+    st.caption("*estimated information")
 
 elif engagement == 'Regions':
-    col1.metric("Inland %",int(s_inland_region))
-    col2.metric("Costal %",int(s_costal_region))
-    col1.metric("Urban %",int(s_urban_region))
-    col2.metric("Rural %",int(s_rural_region))
     col1.metric("Total Pledge Region",int(s_num_regions.sum()))
-    col1.subheader("Hazards Region")
-    col1.markdown(p_hazard_region)
-    col1.subheader("Type of Resilience")
-    col1.markdown(p_type_resilience_region)
-    col1.subheader("Continents of Region")
-    col1.markdown(p_continents_region)
+    col2.metric("Inland %*",int(s_inland_region))
+    col3.metric("Costal %*",int(s_costal_region))
+    col4.metric("Urban %*",int(s_urban_region))
+    col5.metric("Rural %*",int(s_rural_region))
+
+    #st.subheader("Hazards Region")
+    st.markdown("**Hazards Region**: "+p_hazard_region)
+    #st.subheader("Type of Resilience")
+    st.markdown("**Type of Resilience**: "+p_type_resilience_region)
+    #st.subheader("Continents of Region")
+    st.markdown("**Continents**: "+p_continents_region)
     #s_num_resilience_provision_key_countries= df_plan_select['q956']
     #s_num_protection_harm_countries= df_plan_select['q958']
+    st.caption("*estimated information")
 
 elif engagement == 'Cities':
-    col1.metric("Inland %",int(s_inland_cities))
-    col2.metric("Costal %",int(s_costal_cities))
-    col1.metric("Urban %",int(s_urban_cities))
-    col2.metric("Rural %",int(s_rural_cities))
-    col1.subheader("Hazards Cities")
-    col1.markdown(p_hazard_cities)
-    col1.subheader("Type of Resilience")
-    col1.markdown(p_type_resilience_cities)
-    col1.subheader("Continents of countries")
-    col1.markdown(p_continents_cities)
-    #s_num_resilience_provision_key_countries= df_plan_select['q956']
-    #s_num_protection_harm_countries= df_plan_select['q958']
+    col1.metric("Total Pledge Cities",numerize(s_num_cities.sum()))
+    col2.metric("Inland %*",int(s_inland_cities))
+    col3.metric("Costal %*",int(s_costal_cities))
+    col4.metric("Urban %*",int(s_urban_cities))
+    col5.metric("Rural %*",int(s_rural_cities))
+
+    #st.subheader("Hazards Cities")
+    st.markdown("**Hazards Cities**: "+p_hazard_cities)
+    #st.subheader("Type of Resilience")
+    st.markdown("**Type of Resilience**: "+p_type_resilience_cities)
+    #st.subheader("Continents of countries")
+    st.markdown("**Continents**: "+p_continents_cities)
+
+    st.caption("*estimated information")
 
 
 else:
-    col1.metric("Inland %",s_inland_natsys)  #q2268
-    col2.metric("Costal %",s_costal_natsys) #q2269
-    col1.metric("Urban %",s_urban_natsys) #q2271
-    col2.metric("Rural %",s_rural_natsys) #q2272
     col1.metric("Total Hectares Natural Systems",numerize(s_num_natural_system.sum()))
-    col1.subheader("Type of Natural System")
-    col1.markdown(p_type_nansyst) #q2262
-    col1.subheader("Virgin or Anthropically")
-    col1.markdown(p_virg_antrho_nansyst) #q2266
-    col1.subheader("Hazards")
-    col1.markdown(p_hazards_nansyst) #q2293
-    col1.subheader("Continents Natural Systems")
-    col1.markdown(p_continents_natsys) #q2304
+    col1.metric("Inland %*",s_inland_natsys)
+    col2.metric("Costal %*",s_costal_natsys)
+    col3.metric("Urban %*",s_urban_natsys)
+    col4.metric("Rural %*",s_rural_natsys)
+    st.markdown("**Type of Natural System**: "+p_type_nansyst)
+    st.markdown("**Virgin or Anthropically**: "+p_virg_antrho_nansyst)
+    st.markdown("**Hazards**: "+p_hazards_nansyst)
+    st.markdown("**Continents**: "+str(p_continents_natsys))
+    st.caption("*estimated information")
 
 
 
-st.markdown("""---""")
+#st.markdown("""---""")
 
 #Radialgraph
 
@@ -682,7 +685,7 @@ col1.write(s_fig_ra_general)
 col2.write(s_fig_ra_all)
 
 sub_ra_partner = st.selectbox(
-        "SELECT A RESILIENCE ATTRIBUTE'S SUB-CATEGORY DESCRIPTION BY "+str(p_short_name)+"*",
+        "SELECT A RESILIENCE ATTRIBUTE'S SUB-CATEGORY DESCRIPTION BY "+str(p_short_name),
     options=df_sub_ra_def['SUB_RA'].unique())
 
 if sub_ra_partner == 'Equity':
@@ -728,14 +731,16 @@ elif sub_ra_partner == 'Services':
 #st.markdown("[Select another partner](#INFORMATION-BY-PARTNER)")
 #st.markdown("[Section 1](#section-1)")
 
-#st.markdown("""---""")
+st.markdown("""---""")
 
+
+col1, col2 = st.columns(2)
 #st.title("R2R METRICS DASHBOARD")
-st.header("PLAN")
+col1.title("PLAN")
 #st.markdown('Short Description of the Survey "Plan"')
 
 #data
-df_plan = pd.read_csv('BD_PLAN_CSV_27oct.csv',sep=';', header=None, prefix="p").iloc[2:]
+df_plan = pd.read_csv('BD_PLAN_CSV_08_nov.csv',sep=';', header=None, prefix="p").iloc[2:]
 df_plan.set_index("p0", inplace = True)
 df_plan = df_plan.dropna(how = 'all')
 
@@ -747,11 +752,13 @@ df_plan = df_plan.dropna(how = 'all')
 df_plan_partner = df_plan.query('p2 == @partner')
 
 
+#number_of_plan = str((df_plan_partner['p2788'].value_counts()).sum())
+number_of_plan = sum(pd.to_numeric(df_plan_partner['p2788']))
 
-number_of_plan = str((df_plan_partner['p4'].value_counts()).sum())
 partner_name = str(partner)
 
-st.subheader(partner+" has "+number_of_plan+" plan(s)")
+col2.caption('')
+col2.subheader(partner+" has "+str(number_of_plan)+" plan(s) reported")
 
 plan = st.selectbox(
     "SELECT A PLAN:",
@@ -777,83 +784,97 @@ if who_long_action == "Fading":
 
 
 t_a_domain = df_plan_select['p16'].values[0]  #t_a_domain
-t_a_assessments_monitoring = df_plan_select['p5'].values[0]  #t_a_assessments_monitoring
-t_a_early_action = df_plan_select['p6'].values[0]  #t_a_early_action
-t_a_preparedness = df_plan_select['p7'].values[0]  #t_a_preparedness
-t_a_governance_capacity_building = df_plan_select['p8'].values[0]  #t_a_governance_capacity_building
-t_a_nature_based_solutions = df_plan_select['p9'].values[0]  #t_a_nature_based_solutions
-t_a_infrastructure_services = df_plan_select['p10'].values[0]  #t_a_infrastructure_services
-t_a_risk_transfer = df_plan_select['p11'].values[0]  #t_a_risk_transfer
-t_a_sharing_best_practice = df_plan_select['p12'].values[0]  #t_a_sharing_best_practice
-t_a_increasing_finance = df_plan_select['p13'].values[0]  #t_a_increasing_finance
-t_a_other = df_plan_select['p14'].values[0]  #t_a_other
+t_a_assessments_monitoring = df_plan_select['p25'].values[0]  #t_a_assessments_monitoring
+t_a_early_action = df_plan_select['p30'].values[0]  #t_a_early_action
+t_a_preparedness = df_plan_select['p37'].values[0]  #t_a_preparedness
+t_a_governance_capacity_building = df_plan_select['p67'].values[0]  #t_a_governance_capacity_building
+t_a_nature_based_solutions = df_plan_select['p82'].values[0]  #t_a_nature_based_solutions
+t_a_infrastructure_services = df_plan_select['p107'].values[0]  #t_a_infrastructure_services
+t_a_risk_transfer = df_plan_select['p117'].values[0]  #t_a_risk_transfer
+t_a_sharing_best_practice = df_plan_select['p142'].values[0]  #t_a_sharing_best_practice
+t_a_increasing_finance = df_plan_select['p152'].values[0]  #t_a_increasing_finance
+t_a_other = df_plan_select['p15'].values[0]  #t_a_other
 
 
 #st.subheader("ACTION AREA")
 #st.markdown(str(t_a_domain))
 
-st.subheader("Type of action")
+st.subheader("TYPE OF ACTION")
+
+if len(str(t_a_assessments_monitoring)) > 3:
+    st.markdown("**CLIMATE RISK VULNERABILITY ASSESSMENTS; DISCLOSURE & MONITORING**: "+str(t_a_assessments_monitoring)+".")
 
 if len(str(t_a_early_action)) > 3:
-    st.markdown("**Climate risk vulnerability assessments; disclosure & monitoring**: "+str(t_a_assessments_monitoring))
-
-if len(str(t_a_early_action)) > 3:
-    st.markdown("**Early warning systems & early action**: "+str(t_a_early_action))
+    st.markdown("**EARLY WARNING SYSTEMS & EARLY ACTION**:"+str(t_a_early_action)+".")
 
 if len(str(t_a_preparedness)) > 3:
-    st.markdown("**Preparedness, contingency plans/ emergency response**: "+str(t_a_preparedness))
+    st.markdown("**PREPAREDNESS, CONTINGENCY PLANS/ EMERGENCY RESPONSE**:"+str(t_a_preparedness)+".")
 
 if len(str(t_a_governance_capacity_building)) > 3:
-    st.markdown("**Climate risk governance & capacity-building**: "+str(t_a_governance_capacity_building))
+    st.markdown("**CLIMATE RISK GOVERNANCE & CAPACITY-BUILDING**: "+str(t_a_governance_capacity_building)+".")
 
 if len(str(t_a_nature_based_solutions)) > 3:
-    st.markdown("**Nature-based solutions to reduce risks**: "+str(t_a_nature_based_solutions))
+    st.markdown("**NATURE-BASED SOLUTIONS TO REDUCE RISKS**: "+str(t_a_nature_based_solutions)+".")
 
 if len(str(t_a_infrastructure_services)) > 3:
-    st.markdown("**Climateproofing infrastructure & services**: "+str(t_a_infrastructure_services))
+    st.markdown("**CLIMATEPROOFING INFRASTRUCTURE & SERVICES**: "+str(t_a_infrastructure_services)+".")
 
 if len(str(t_a_risk_transfer)) > 3:
-    st.markdown("**Risk transfer: Insurance & social protection**: "+str(t_a_risk_transfer))
+    st.markdown("**RISK TRANSFER: INSURANCE & SOCIAL PROTECTION**: "+str(t_a_risk_transfer)+".")
 
 if len(str(t_a_sharing_best_practice)) > 3:
-    st.markdown("**Sharing best practice on climate risk Actions management**: "+str(t_a_sharing_best_practice))
+    st.markdown("**SHARING BEST PRACTICE ON CLIMATE RISK ACTIONS MANAGEMENT**: "+str(t_a_sharing_best_practice)+".")
 
 if len(str(t_a_increasing_finance)) > 3:
-    st.markdown("**Increasing the volume, quality of public and private finance**: "+str(t_a_increasing_finance))
+    st.markdown("**INCREASING THE VOLUME, QUALITY OF PUBLIC AND PRIVATE FINANCE**: "+str(t_a_increasing_finance)+".")
 
 if len(str(t_a_other)) > 3:
-    st.markdown("**Other**: "+str(t_a_other))
+    st.markdown("**OTHER**: "+str(t_a_other)+".")
 
 
-# Type of Hazards
-st.subheader("Hazard")
-Hazard = df_plan_select['p173'].values[0]  #Hazard
-st.markdown(str(Hazard))
 
-#Estimated number of projects you are planning to perform to implement this action (e.g. a project can be a specific instance of the action in a given territory/with a given beneficiary).
-
-
-st.subheader("Current status of proyects")
+st.subheader("CURRENT STATUS OF PROYECTS")
 #df_plan_select['p2780'] = pd.to_numeric(df['p2780']) #Estimated_numer_of_proyects
-Estimated_numer_of_proyects = df_plan_select['p2780'].values[0]  #Estimated_numer_of_proyects
-st.markdown("Estimated number of projects you are planning to perform to implement this action (e.g. a project can be a specific instance of the action in a given territory/with a given beneficiary).**: "+str(Estimated_numer_of_proyects))
+
+col1, col2, col3, col4 = st.columns(4)
+
+
+#Number of your members that participate in implementing these projects.
+#df_plan_select['p2781'] = pd.to_numeric(df['p2781']) #Number_of_members_
+Number_of_members_ = df_plan_select['p2787'].values[0]  #Number_of_members_
+col1.markdown("NUMBER OF MEMBERS PARTICIPATING: ")
+col1.subheader(str(Number_of_members_))
+#st.metric("Number of members that participate in implementing these projects", int(Number_of_members_))
+
+
+Estimated_numer_of_proyects = df_plan_select['p2786'].values[0]  #Estimated_numer_of_proyects
+col2.markdown("NUMBER OF PROJECTS PLANNED*:")
+col2.subheader(str(Estimated_numer_of_proyects))
+#col1.caption("*e.g. a project can be a specific instance of the action in a given territory/with a given beneficiary")
+#st.metric("Estimated number of proyects", int(Estimated_numer_of_proyects))
 
 #Please indicate how many of the planned projects have started. *in %
 #df_plan_select['p2777'] = pd.to_numeric(df['p2777']) #Projects_have_started
 Projects_have_started = df_plan_select['p2777'].values[0]  #Projects_have_started
-st.markdown("Please indicate how many of the planned projects have started: "+str(Projects_have_started)+"%")
+col3.markdown("PROYECTS ALREADY STARTED*:")
+col3.subheader(str(Projects_have_started)+" %")
+#st.metric("Number of proyects already started", int(Projects_have_started))
 
 #Please indicate how many of the planned projects have been completed.* in %
 #df_plan_select['p2778'] = pd.to_numeric(df['p2778']) #Projects_have_been_comleted
 Projects_have_been_comleted = df_plan_select['p2778'].values[0]  #Projects_have_been_comleted
-st.markdown("Please indicate how many of the planned projects have been completed: "+str(Projects_have_been_comleted)+"%")
+col4.markdown("PROYECTS COMPLETED*:")
+col4.subheader(str(Projects_have_been_comleted)+" %")
+#st.metric("Number of proyects completed", int(Projects_have_been_comleted))
+st.caption("*estimated information")
 
-#Number of your members that participate in implementing these projects.
-#df_plan_select['p2781'] = pd.to_numeric(df['p2781']) #Number_of_members_
-Number_of_members_ = df_plan_select['p2781'].values[0]  #Number_of_members_
-st.markdown("Number of your members that participate in implementing these projects: "+str(Number_of_members_))
+# Type of Hazards
+st.subheader("HAZARDS")
+Hazard = df_plan_select['p173'].values[0]  #Hazard
+st.markdown(str(Hazard))
 
-st.subheader("Target beneficiaries")
+
+st.subheader("TARGET BENEFICIARIES")
 
 #Key variables SELECTION PLAN
 
@@ -933,76 +954,84 @@ p_virg_antrho_nansyst_plan = df_plan_select['p2376'].values[0]
 
 p_continents_natsys_plan = df_plan_select['p2389'].values[0]
 
-col1, col2, col3,col4 = st.columns(4)
+col1, col2, col3,col4,col5 = st.columns(5)
 
 
 if engagement_plan == 'Individuals':
-    st.metric("Total Plan Direct Beneficiaries",numerize(int(s_total_individuals_plan.sum())))
-    col1.metric("Inland %",s_inland_ind_plan)
-    col2.metric("Costal %",s_costal_ind_plan)
-    col3.metric("Urban %",s_urban_ind_plan)
-    col4.metric("Rural %",s_rural_ind_plan)
-    st.subheader("Continents where they operate")
-    st.markdown(p_ind_continents_plan)
+    col1.metric("Total Plan Direct Beneficiaries",numerize(int(s_total_individuals_plan.sum())))
+    col2.metric("Inland %*",s_inland_ind_plan)
+    col3.metric("Costal %*",s_costal_ind_plan)
+    col4.metric("Urban %*",s_urban_ind_plan)
+    col5.metric("Rural %*",s_rural_ind_plan)
+    st.markdown("**Continents where they operate**: "+p_ind_continents_plan)
+    #st.markdown(p_ind_continents_plan)
+    st.caption("*estimated information")
 
 
 elif engagement_plan == 'Companies':
-    st.metric("Total Pledge Nº Companies",s_num_companies_plan.sum())
+    col1.metric("Total Pledge Nº Companies",s_num_companies_plan.sum())
+    col2.metric("Inland %*",s_inland_companies_plan)
+    col3.metric("Costal %*",s_costal_companies_plan)
+    col4.metric("Urban %*",s_urban_companies_plan)
+    col5.metric("Rural %*",s_rural_companies_plan)
     st.subheader("Sector Companies")
     st.markdown(p_sector_companies_plan)
-    col1.metric("Inland %",s_inland_companies_plan)
-    col2.metric("Costal %",s_costal_companies_plan)
-    col3.metric("Urban %",s_urban_companies_plan)
-    col4.metric("Rural %",s_rural_companies_plan)
-    st.subheader("Type Resilience Companies")
-    st.markdown(p_type_resilience_companies_plan)
-    st.subheader("Continents Companies")
-    st.markdown(p_continents_companies_plan)
+    #st.subheader("**Type Resilience Companies**: ")
+    st.markdown("**Type Resilience Companies**: "+p_type_resilience_companies_plan)
+    #st.subheader("**Continents Companies**: ")
+    st.markdown("**Continents where they operate**: "+p_continents_companies_plan)
+    st.caption("*estimated information")
 
 elif engagement_plan == 'Countries':
-    st.metric("Number of Countries where they operate",s_num_countries_plan.sum())
-    col1.metric("Inland %",s_inland_countries_plan)
-    col2.metric("Costal %",s_costal_countries_plan)
-    col3.metric("Urban %",s_urban_countries_plan)
-    col4.metric("Rural %",s_rural_countries_plan)
-    st.subheader("Type of Resilience")
-    st.markdown(p_type_resilience_countries_plan)
-    st.subheader("Continents of countries")
-    st.markdown(p_continents_countries_plan)
+    col1.metric("Number of Countries where they operate",s_num_countries_plan.sum())
+    col2.metric("Inland %*",s_inland_countries_plan)
+    col3.metric("Costal %*",s_costal_countries_plan)
+    col4.metric("Urban %*",s_urban_countries_plan)
+    col5.metric("Rural %*",s_rural_countries_plan)
+    #st.subheader("**Type of Resilience**: ")
+    st.markdown("**Type of Resilience**: "+p_type_resilience_countries_plan)
+    #st.subheader("**Continents of countries**: ")
+    st.markdown("**Continents where they operate**: "+p_continents_countries_plan)
+    st.caption("*estimated information")
 
 
 elif engagement_plan == 'Regions':
-    st.metric("Total Plan Region",s_num_regions.sum())
-    col1.metric("Inland %",s_inland_region_plan)
-    col2.metric("Costal %",s_costal_region_plan)
-    col3.metric("Urban %",s_urban_region_plan)
-    col4.metric("Rural %",s_rural_region_plan)
-    st.subheader("Type of Resilience")
-    st.markdown(p_type_resilience_region_plan)
-    st.subheader("Continents of Region")
-    st.markdown(p_continents_region_plan)
+    col1.metric("Total Plan Region",s_num_regions.sum())
+    col2.metric("Inland %*",s_inland_region_plan)
+    col3.metric("Costal %*",s_costal_region_plan)
+    col4.metric("Urban %*",s_urban_region_plan)
+    col4.metric("Rural %*",s_rural_region_plan)
+    #st.subheader("**Type of Resilience**:")
+    st.markdown("**Type of Resilience**: "+p_type_resilience_region_plan)
+    #st.subheader("**Continents of Region**: ")
+    st.markdown("**Continents where they operate**: "+p_continents_region_plan)
+    st.caption("*estimated information")
 
 elif engagement_plan == 'Cities':
-    col1.metric("Inland %",s_inland_cities_plan)
-    col2.metric("Costal %",s_costal_cities_plan)
-    col3.metric("Urban %",s_urban_cities_plan)
-    col4.metric("Rural %",s_rural_cities_plan)
-    st.subheader("Type of Resilience")
-    st.markdown(p_type_resilience_cities_plan)
-    st.subheader("Continents of countries")
-    st.markdown(p_continents_cities_plan)
+    col1.metric("Inland %*",s_inland_cities_plan)
+    col2.metric("Costal %*",s_costal_cities_plan)
+    col3.metric("Urban %*",s_urban_cities_plan)
+    col4.metric("Rural %*",s_rural_cities_plan)
+    #st.subheader("**Type of Resilience**: ")
+    st.markdown("**Type of Resilience**: "+p_type_resilience_cities_plan)
+    #st.subheader("**Continents of countries**: ")
+    st.markdown("**Continents where they operates**: "+p_continents_cities_plan)
+    st.caption("*estimated information")
+
+elif engagement_plan == 'Natural System':
+    col1.metric("Total Hectares Natural Systems",numerize(int(s_num_natural_system.sum())))
+    col2.metric("Inland %*",s_inland_natsys_plan)
+    col3.metric("Costal %*",s_costal_natsys_plan)
+    col4.metric("Urban %*",s_urban_natsys_plan)
+    col5.metric("Rural %*",s_rural_natsys_plan)
+    st.markdown("**Type of Natural System**: "+str(p_type_nansyst_plan))
+    #st.subheader("Virgin or Anthropically")
+    st.markdown("**Virgin or Anthropically**: "+str(p_virg_antrho_nansyst_plan)) #q2266
+    #st.subheader("Continents Natural Systems")
+    st.markdown("**Continents where they operate**: "+str(p_continents_natsys_plan)) #q2304
+    st.caption("*estimated information")
 
 else:
-    st.metric("Total Hectares Natural Systems",numerize(int(s_num_natural_system.sum())))
-    st.subheader("Type of Natural System")
-    st.markdown(p_type_nansyst_plan) #q2262
-    st.subheader("Virgin or Anthropically")
-    st.markdown(p_virg_antrho_nansyst_plan) #q2266
-    col1.metric("Inland %",s_inland_natsys_plan)  #q2268
-    col2.metric("Costal %",s_costal_natsys_plan) #q2269
-    col3.metric("Urban %",s_urban_natsys_plan) #q2271
-    col4.metric("Rural %",s_rural_natsys_plan) #q2272
-    st.subheader("Continents Natural Systems")
-    st.markdown(p_continents_natsys_plan) #q2304
+    st.write("")
 
-st.markdown("""---""")
+#st.markdown("""---""")
