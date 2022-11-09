@@ -976,7 +976,7 @@ elif engagement_plan == 'Companies':
     col3.metric("Costal %*",s_costal_companies_plan)
     col4.metric("Urban %*",s_urban_companies_plan)
     col5.metric("Rural %*",s_rural_companies_plan)
-    st.subheader("Sector Companies")
+    st.markdown("Sector Companies")
     st.markdown(p_sector_companies_plan)
     #st.subheader("**Type Resilience Companies**: ")
     st.markdown("**Type Resilience Companies**: "+p_type_resilience_companies_plan)
