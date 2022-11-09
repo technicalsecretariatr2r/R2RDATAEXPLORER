@@ -503,21 +503,21 @@ df_select_engagement = df_select.query('index == @engagement')  ####REVISAR
 col1, col2, col3, col4,col5 = st.columns(5)
 
 if engagement == 'Individuals':
-    #col1.metric("Total Pledge Direct Beneficiaries",numerize(s_total_individuals.sum()))
-    col1.markdown("**Total Pledge Direct Beneficiaries**")
-    col1.subheader(numerize(s_total_individuals.sum()))
-    #col2.metric("Inland*",s_inland_ind) ##
-    col2.markdown("**Inland***")
-    col2.subheader(str(s_inland_ind)+" %")
-    #col3.metric("Costal %*",s_costal_ind)
-    col3.markdown("**Costal***")
-    col3.subheader(str(s_costal_ind)+" %")              
-    #col4.metric("Urban %*",s_urban_ind)
-    col4.markdown("**Urban***")
-    col4.subheader(str(s_urban_ind)+" %")  
-    #col5.metric("Rural %*",s_rural_ind)
-    col5.markdown("**Rural***")
-    col5.subheader(str(s_rural_ind)+" %") 
+    col1.metric("Total Pledge Direct Beneficiaries",numerize(s_total_individuals.sum()))
+    #col1.markdown("**Total Pledge Direct Beneficiaries**")
+    #col1.subheader(numerize(s_total_individuals.sum()))
+    col2.metric("Inland (%)*",s_inland_ind) ##
+    #col2.markdown("**Inland***")
+    #col2.subheader(str(s_inland_ind)+" %")
+    col3.metric("Costal (%)*",s_costal_ind)
+    #col3.markdown("**Costal***")
+    #col3.subheader(str(s_costal_ind)+" %")              
+    col4.metric("Urban (%)*",s_urban_ind)
+    #col4.markdown("**Urban***")
+    #col4.subheader(str(s_urban_ind)+" %")  
+    col5.metric("Rural (%)*",s_rural_ind)
+    #col5.markdown("**Rural***")
+    #col5.subheader(str(s_rural_ind)+" %") 
     st.markdown("**Hazards to provide Resilience**: "+p_ind_hazard)
     #st.markdown(p_ind_hazard)
     #st.subheader("Continents where they operate")
@@ -527,10 +527,10 @@ if engagement == 'Individuals':
 
 elif engagement == 'Companies':
     col1.metric("Total Pledge Nº Companies",numerize(s_num_companies.sum()))
-    col2.metric("Inland %*",int(s_inland_companies))
-    col3.metric("Costal %*",int(s_costal_companies))
-    col4.metric("Urban %*",int(s_urban_companies))
-    col5.metric("Rural %*",int(s_rural_companies))
+    col2.metric("Inland (%)*",int(s_inland_companies))
+    col3.metric("Costal (%)*",int(s_costal_companies))
+    col4.metric("Urban (%)*",int(s_urban_companies))
+    col5.metric("Rural (%)*",int(s_rural_companies))
 
     #st.subheader("Sector Companies")
     st.markdown("**Sector Companies**: "+p_sector_companies)
@@ -549,10 +549,10 @@ elif engagement == 'Companies':
 
 elif engagement == 'Countries':
     col1.metric("Number of Countries where they operate",int(s_num_countries.sum()))
-    col2.metric("Inland %*",int(s_inland_countries))
-    col3.metric("Costal %*",int(s_costal_countries))
-    col4.metric("Urban %*",int(s_urban_countries))
-    col5.metric("Rural %*",int(s_rural_countries))
+    col2.metric("Inland (%)*",int(s_inland_countries))
+    col3.metric("Costal (%)*",int(s_costal_countries))
+    col4.metric("Urban (%)*",int(s_urban_countries))
+    col5.metric("Rural (%)*",int(s_rural_countries))
     st.markdown("**Hazards countries**:"+p_hazard_countries)
     #st.markdown(p_hazard_countries)
     st.markdown("**Type of Resilience**: "+p_type_resilience_countries)
@@ -565,10 +565,10 @@ elif engagement == 'Countries':
 
 elif engagement == 'Regions':
     col1.metric("Total Pledge Region",numerize(s_num_regions.sum()))
-    col2.metric("Inland %*",s_inland_region)
-    col3.metric("Costal %*",s_costal_region)
-    col4.metric("Urban %*",s_urban_region)
-    col5.metric("Rural %*",s_rural_region)
+    col2.metric("Inland (%)*",s_inland_region)
+    col3.metric("Costal (%)*",s_costal_region)
+    col4.metric("Urban (%)*",s_urban_region)
+    col5.metric("Rural (%)*",s_rural_region)
 
     #st.subheader("Hazards Region")
     st.markdown("**Hazards Region**: "+p_hazard_region)
@@ -582,10 +582,10 @@ elif engagement == 'Regions':
 
 elif engagement == 'Cities':
     col1.metric("Total Pledge Cities",numerize(s_num_cities.sum()))
-    col2.metric("Inland %*",s_inland_cities)
-    col3.metric("Costal %*",s_costal_cities)
-    col4.metric("Urban %*",s_urban_cities)
-    col5.metric("Rural %*",s_rural_cities)
+    col2.metric("Inland (%)*",s_inland_cities)
+    col3.metric("Costal (%)*",s_costal_cities)
+    col4.metric("Urban (%)*",s_urban_cities)
+    col5.metric("Rural (%)*",s_rural_cities)
 
     #st.subheader("Hazards Cities")
     st.markdown("**Hazards Cities**: "+p_hazard_cities)
@@ -599,10 +599,10 @@ elif engagement == 'Cities':
 
 else:
     col1.metric("Total Hectares Natural Systems",numerize(s_num_natural_system.sum()))
-    col2.metric("Inland %*",s_inland_natsys)
-    col3.metric("Costal %*",s_costal_natsys)
-    col4.metric("Urban %*",s_urban_natsys)
-    col5.metric("Rural %*",s_rural_natsys)
+    col2.metric("Inland (%)*",s_inland_natsys)
+    col3.metric("Costal (%)*",s_costal_natsys)
+    col4.metric("Urban (%)*",s_urban_natsys)
+    col5.metric("Rural (%)*",s_rural_natsys)
     st.markdown("**Type of Natural System**: "+p_type_nansyst)
     st.markdown("**Virgin or Anthropically**: "+p_virg_antrho_nansyst)
     st.markdown("**Hazards**: "+p_hazards_nansyst)
