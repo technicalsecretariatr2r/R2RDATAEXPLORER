@@ -254,7 +254,7 @@ df3 = pd.DataFrame(dict(
     r=[Equity, Inclusivity,Preparedness,Planning,Experential_learning, Educational_learning,
     Autonomy, Leardership,Decision_making,Collective_participation,Connectivity,Networking,Diversity,
      Redundancy,Finance,Natural_resources,Technologies,Infrastructure,Services],
-    theta=['Equity','Inclusivity','Preparedness','Planning','Experential learning','Educational learning',
+    theta=['Equity','Inclusivity','Preparedness','Planning','Experiential learning','Educational learning',
     'Autonomy','Leardership','Decision making','Collective participation','Connectivity','Networking','Diversity ',
     'Redundancy','Finance','Natural resources','Technologies','Infrastructure',
     'Services']))
