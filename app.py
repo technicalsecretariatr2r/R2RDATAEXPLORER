@@ -508,16 +508,16 @@ if engagement == 'Individuals':
     col1.subheader(numerize(s_total_individuals.sum()))
     #col2.metric("Inland*",s_inland_ind) ##
     col2.markdown("**Inland***"
-    col2.subheader(s_inland_ind+" %")
+    col2.subheader(str(s_inland_ind)+" %")
     #col3.metric("Costal %*",s_costal_ind)
     col3.markdown("**Costal***"
-    col3.subheader(s_costal_ind+" %")              
+    col3.subheader(str(s_costal_ind)+" %")              
     #col4.metric("Urban %*",s_urban_ind)
     col4.markdown("**Urban***")
-    col4.subheader(s_urban_ind+" %")  
+    col4.subheader(str(s_urban_ind)+" %")  
     #col5.metric("Rural %*",s_rural_ind)
     col5.markdown("**Rural***")
-    col5.subheader(s_rural_ind+" %") 
+    col5.subheader(str(s_rural_ind)+" %") 
     st.markdown("**Hazards to provide Resilience**: "+p_ind_hazard)
     #st.markdown(p_ind_hazard)
     #st.subheader("Continents where they operate")
