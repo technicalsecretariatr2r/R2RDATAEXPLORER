@@ -963,7 +963,7 @@ if engagement_plan == 'Individuals':
     col3.metric("Costal %*",s_costal_ind_plan)
     col4.metric("Urban %*",s_urban_ind_plan)
     col5.metric("Rural %*",s_rural_ind_plan)
-    st.markdown("**Continents where they operate**: "+str(p_ind_continents_plan)+".")
+    st.markdown("**Continents where they operate**: "+p_ind_continents_plan)
     #st.markdown(p_ind_continents_plan)
     st.caption("*estimated information")
 
