@@ -589,10 +589,10 @@ elif engagement == 'Cities':
 
 else:
     col1.metric("Total Hectares Natural Systems",numerize(s_num_natural_system.sum()))
-    col1.metric("Inland %*",s_inland_natsys)
-    col2.metric("Costal %*",s_costal_natsys)
-    col3.metric("Urban %*",s_urban_natsys)
-    col4.metric("Rural %*",s_rural_natsys)
+    col2.metric("Inland %*",s_inland_natsys)
+    col3.metric("Costal %*",s_costal_natsys)
+    col4.metric("Urban %*",s_urban_natsys)
+    col5.metric("Rural %*",s_rural_natsys)
     st.markdown("**Type of Natural System**: "+p_type_nansyst)
     st.markdown("**Virgin or Anthropically**: "+p_virg_antrho_nansyst)
     st.markdown("**Hazards**: "+p_hazards_nansyst)
